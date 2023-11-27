@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main(){
+  int num1;
+  float cuadrado;
+  int i;
+  int numrep;
+  printf("Introduzca la cantidad de números que quiere probar: ");
+  scanf(" %d", numrep);
+  i=0;
+  while (i<=numrep){
+    printf("Escribe un número entero: ");
+    scanf (" %d", num1);
+    cuadrado=(num1²);
+    printf("cuadrado de %d = %f",num1 ,cuadrado);
+    i++;
+  }
+  
+
+
+  return 0;
+}

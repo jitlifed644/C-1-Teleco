@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+
+int main (){
+
+  char caracter;
+  char array[] = {'E', 'Q', 'L', 'F', 'X'};
+  char mayuscula;
+  do{ 
+  printf ("\nDame un caracter (EQLFX): ");
+  scanf ("%c", &caracter);
+  mayuscula = toupper(caracter);
+ 
+  }while(strchr(array,mayuscula) == NULL);
+ 
+  fprintf (stdout,"La letra %c en mayusculas es: %c\n",caracter, mayuscula);
+  
+  return 0;
+
+}

@@ -1,0 +1,6 @@
+#include <stdio.h>
+
+int main(){
+voidlabel() { //Función label()printf ("Hola Mundo\n");return;//Sale de la función}intmain(){//Función principallabel();//llamada a la función label()return0;//sale demain()con valor0}
+
+}

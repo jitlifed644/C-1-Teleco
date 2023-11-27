@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <math.h>
+int main() {
+
+  int num;
+  float raiz;
+  
+  fscanf (stdin, "Introduzca un número entero: %d\n", &num);
+  raiz = sqrtf(num);
+  fprintf (stdout, "Su raíz es: %10.2f\n", raiz);
+
+
+  return 0;
+}

@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main (){
+
+  char caracter;
+  char mayuscula;
+
+  fprintf (stdout,"Dame un caracter: ");
+  fscanf (stdin, "%c", &caracter);
+
+  mayuscula = toupper(caracter);
+  
+    fprintf (stdout,"\n%c\n", mayuscula);
+
+    return 0;
+
+}

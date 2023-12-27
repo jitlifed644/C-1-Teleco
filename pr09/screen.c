@@ -24,48 +24,68 @@ void get_string(const char *mensaje, char *palabra)
 {
 
     char cadena[50];
-    int longitud;
+    char respuesta[256], resto[256];
+    int dato_correcto;
     do
     {
-        printf(" %s", mensaje);
-        scanf("%s", cadena);
-
-        longitud = strlen(cadena);
-    } while (longitud > 24);
+        printf(" %s [1-24]: ", mensaje);
+        fgets(respuesta, sizeof(respuesta), stdin);
+        if ((sscanf(respuesta, "%s%s", cadena, resto)) == 1) 
+        //Para usar el sscanf se pone primero se pone la cadena en la que se quiere escribir,
+        //despues los identificadores, y por ultimo las variables de las que se sacan los datos.
+        {
+            if ((strlen(cadena) > 0) && (strlen(cadena) < 24))
+            {
+                dato_correcto = 1;
+            }
+        }
+    } while (!dato_correcto);
     strcpy(palabra, cadena);
-
     return;
 }
 
 int get_integer(const char *mensaje)
 {
     int num;
+    char respuesta[256], resto[256];
+    int dato_correcto;
+    dato_correcto = 0;
     do
     {
         printf(" %s [0, 1000]: ", mensaje);
-        scanf("%d", &num);
-    } while (num > 1000 || num < 0);
+        fgets(respuesta, sizeof(respuesta), stdin);
+        if ((sscanf(respuesta, "%d%s", &num, resto)) == 1)
+            if ((num >= 0) && (num <= 1000))
+            {
+                dato_correcto = 1;
+            }
+    } while (!dato_correcto);
 
     return num;
 }
 
 char get_character(const char *mensaje, const char *pattern)
 {
-    char cadena[256];
-    char caracter;
-    char mayus;
+    char c, mayus, respuesta[256], resto[256];
+    int dato_correcto;
+    dato_correcto = 0;
     do
     {
-        printf(" %s", mensaje);
-        fgets(cadena, sizeof(cadena), stdin);
-
-        if (sscanf(cadena, "%c%*s", &caracter) != 1)
+        printf("\n%s[%s] ", mensaje, pattern);
+        fgets(respuesta, sizeof(respuesta), stdin);
+        if ((sscanf(respuesta, "%c%s", &c, resto)) != 1)
         {
-            printf("Entrada no válida.\n");
+            dato_correcto = 0;
         }
-    } while (sscanf(cadena, "%c%*s", &caracter) != 1);
-
-    mayus=toupper(caracter);
+        else
+        {
+            if (strchr(pattern, toupper(c)) != NULL)
+            {
+                dato_correcto = 1;
+            }
+        }
+        mayus = toupper(c);
+    } while (!dato_correcto);
 
     return mayus;
 }
